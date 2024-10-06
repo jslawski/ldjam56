@@ -13,12 +13,26 @@ public class GrabbableObject : MonoBehaviour
     [SerializeField]
     private GameObject indicatorObject;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.tag == "Bug" || collision.collider.tag == "Playfield")
+        if (other.tag == "Bug" || other.tag == "Playfield")
         {
-            Debug.LogError("Tag: " + collision.collider.tag);
-        
+            this.gameObject.layer = LayerMask.NameToLayer("Playfield");
+            this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
+            this.gameObject.transform.parent.transform.parent = this.playfieldTransform;
+
+            Scorekeeper.AddObject();
+
+            this.indicatorObject.SetActive(false);
+
+            this.grabbed = true;
+        }
+    }
+    /*
+    private void OnTriggerEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Bug" && this.grabbed == false)
+        {        
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
             this.gameObject.transform.parent.transform.parent = this.playfieldTransform;
 
@@ -29,16 +43,18 @@ public class GrabbableObject : MonoBehaviour
             this.grabbed = true;
         }
     }
-
-    private void Update()
+    */
+    private void FixedUpdate()
     {
         if (this.grabbed == true)
         {
             return;
         }
     
-        Vector3 newPosition = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - (this.fallSpeed * Time.deltaTime), this.gameObject.transform.position.z);
+        //Vector3 newPosition = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - (this.fallSpeed * Time.deltaTime), this.gameObject.transform.position.z);
 
-        this.gameObject.transform.parent.position = newPosition;
+        
+
+        this.gameObject.transform.parent.Translate(Vector3.down * this.fallSpeed * Time.fixedDeltaTime);
     }
 }
