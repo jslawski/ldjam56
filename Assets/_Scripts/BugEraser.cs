@@ -27,42 +27,51 @@ public class BugEraser : MonoBehaviour
     private void EraseBugs()
     {
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitInfo;
+        if (Physics.SphereCast(mouseRay, 0.01f, out hitInfo))
+        {
+            StartCoroutine(this.DetachBugBranch(hitInfo.collider.gameObject.GetComponentInChildren<BugBoy>()));
+        }
 
-        RaycastHit[] hits = Physics.SphereCastAll(mouseRay, 0.01f, float.PositiveInfinity, this.collisionLayer, QueryTriggerInteraction.Ignore);
-
+        /*
         if (hits != null)
         {
-            for (int i = 0; i < hits.Length; i++)
+            hits[i]
+        
+            /*for (int i = 0; i < hits.Length; i++)
             {
-                this.DetachBug(hits[i]);
+                if (hits[i].collider.tag == "Bug")
+                {
+                    StartCoroutine(this.DetachBugBranch(hits[i].collider.gameObject.GetComponentInChildren<BugBoy>()));
+                }
             }
         }
+        */
+        
     }
 
-    private void DetachBug(RaycastHit hit)
+    private IEnumerator DetachBugBranch(BugBoy bugToDetach)
     {
-        if (hit.collider.tag != "Bug")
+        if (bugToDetach != null)
         {
-            return;
+            bugToDetach.gameObject.transform.parent.transform.parent = null;
+            Rigidbody bugRigidbody = bugToDetach.gameObject.AddComponent<Rigidbody>();
+
+            Vector3 randomVector = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
+
+            bugRigidbody.AddForce(randomVector * this.forceMagnitude, ForceMode.Impulse);
+
+            yield return new WaitForFixedUpdate();
+
+            if (bugToDetach.prevBug != null)
+            {
+                bugToDetach.prevBug.nextBug = null;
+            }
+            if (bugToDetach.nextBug != null)
+            {
+                bugToDetach.nextBug.prevBug = null;
+                StartCoroutine(this.DetachBugBranch(bugToDetach.nextBug));
+            }
         }
-
-        BugBoy bugToDetach = hit.collider.gameObject.GetComponentInChildren<BugBoy>();
-        bugToDetach.gameObject.transform.parent.transform.parent = null;
-        Rigidbody bugRigidbody = bugToDetach.gameObject.AddComponent<Rigidbody>();
-
-        Vector3 randomVector = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized;
-
-        bugRigidbody.AddForce(randomVector * this.forceMagnitude, ForceMode.Impulse);
-
-        if (bugToDetach.prevBug != null)
-        {
-            bugToDetach.prevBug.nextBug = null;
-        }
-        if (bugToDetach.nextBug != null)
-        {
-            bugToDetach.nextBug.prevBug = null;
-        }
-
-        
     }
 }

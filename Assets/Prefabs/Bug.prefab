@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8624184107702713050}
   - component: {fileID: 3050998742777874694}
   - component: {fileID: 1966830848558938957}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Model
   m_TagString: Bug
   m_Icon: {fileID: 0}
@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9461ac8278acbf2489a20aac99fdee19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextBug: {fileID: 0}
+  prevBug: {fileID: 0}
 --- !u!1 &8422261998403667321
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 110324300732791827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bug
   m_TagString: Bug
   m_Icon: {fileID: 0}

@@ -48,6 +48,7 @@ public class AudioChannel : MonoBehaviour
     public bool crossFading = false;
 
     private Coroutine fadeCoroutineInstance;
+    private Coroutine fadeVolumeCoroutineInstance;
 
     public void Setup(AudioClip clip, AudioChannelSettings settings)
     {
@@ -213,7 +214,7 @@ public class AudioChannel : MonoBehaviour
         }        
     }
 
-    public void FadeOut(float duration)
+    public void FadeOut(float duration, bool stopAfterFade = true)
     {
         if (this.fadeCoroutineInstance != null)
         {
@@ -221,7 +222,7 @@ public class AudioChannel : MonoBehaviour
             this.crossFading = false;
         }
 
-        this.fadeCoroutineInstance = StartCoroutine(this.FadeCoroutine(this.channelSettings.volume, 0.0f, duration));
+        this.fadeCoroutineInstance = StartCoroutine(this.FadeCoroutine(this.channelSettings.volume, 0.0f, duration, stopAfterFade));
     }
 
     public void FadeIn(float duration)
@@ -235,7 +236,7 @@ public class AudioChannel : MonoBehaviour
         this.fadeCoroutineInstance = StartCoroutine(this.FadeCoroutine(0.0f, this.channelSettings.volume, duration));
     }
 
-    private IEnumerator FadeCoroutine(float startVolume, float endVolume, float duration)
+    private IEnumerator FadeCoroutine(float startVolume, float endVolume, float duration, bool stopAfterFade = true)
     {
         this.crossFading = true;
 
@@ -254,10 +255,37 @@ public class AudioChannel : MonoBehaviour
         this.fadeCoroutineInstance = null;
         this.crossFading = false;
 
-        if (this.source.volume <= 0.0f)
+        if (this.source.volume <= 0.0f && stopAfterFade == true)
         {
-            this.Stop();
+            this.Stop(); 
         }        
+    }
+
+    public void FadeVolume(float fromVolume, float toVolume, float duration)
+    {
+        if (this.fadeVolumeCoroutineInstance != null)
+        {
+            StopCoroutine(this.fadeVolumeCoroutineInstance);
+        }
+
+        this.fadeVolumeCoroutineInstance = StartCoroutine(this.FadeVolumeCoroutine(fromVolume, toVolume, duration));
+    }
+
+    private IEnumerator FadeVolumeCoroutine(float startVolume, float endVolume, float duration)
+    {
+        float volumeIncrement = ((endVolume - startVolume) / duration) * Time.fixedDeltaTime;
+
+        this.source.volume = startVolume;
+
+        for (float i = 0; i < duration; i += Time.fixedDeltaTime)
+        {
+            this.source.volume += volumeIncrement;
+            this.channelSettings.volume = this.source.volume;
+
+            yield return new WaitForFixedUpdate();
+        }
+
+        this.fadeVolumeCoroutineInstance = null;
     }
 
     public void Stop()

@@ -141,6 +141,23 @@ public class AudioManager : MonoBehaviour
         return toChannel.channelId;
     }
 
+    public int FadeIn(AudioClip clip, AudioChannelSettings channelSettings, float fadeDuration)
+    {
+        AudioChannel newChannel = this.GetAudioChannel(clip, channelSettings);
+        newChannel.FadeIn(fadeDuration);
+        newChannel.Play();
+
+        this.playingAudioChannels.Add(newChannel);
+
+        return newChannel.channelId;
+    }
+
+    public void FadeOut(int fadingChannelId, float fadeDuration, bool stopAfterFade = true)
+    {
+        AudioChannel fromChannel = this.playingAudioChannels.Find(x => x.channelId == fadingChannelId);
+        fromChannel.FadeOut(fadeDuration);
+    }
+
     public void SetPitch(int channelId, float newPitch)
     {
         AudioChannel targetChannel = this.playingAudioChannels.Find(x => x.channelId == channelId);
@@ -162,6 +179,17 @@ public class AudioManager : MonoBehaviour
 
             targetChannel.channelSettings.volume = newVolume;
         }        
+    }
+
+    public void FadeVolume(int channelId, float fromVolume, float toVolume, float duration)
+    {
+        if (this.IsPlaying(channelId) == false)
+        {
+            return;
+        }
+
+        AudioChannel fromChannel = this.playingAudioChannels.Find(x => x.channelId == channelId);
+        fromChannel.FadeVolume(fromVolume, toVolume, duration);
     }
 
     public bool IsPlaying(int channelId)

@@ -21,7 +21,7 @@ public class BugPlacer : MonoBehaviour
     [SerializeField]
     private AudioClip bugSpawnSound;
 
-    private float deadZoneAngle = 1.0f;
+    //private float deadZoneAngle = 1.0f;
 
     private void Update()
     {
@@ -50,6 +50,8 @@ public class BugPlacer : MonoBehaviour
         {
             float angle = Vector3.Angle(oldMouseRay.direction, newMouseRay.direction);
 
+            this.SpawnBug(newHit.collider, newHit.point, newHit.normal);
+            /*
             if (oldHit.collider != null && angle <= this.deadZoneAngle)
             {
                 this.SpawnBug(oldHit.collider, oldHit.point, oldHit.normal);
@@ -58,7 +60,7 @@ public class BugPlacer : MonoBehaviour
             {
                 this.SpawnBug(newHit.collider, newHit.point, newHit.normal);
             }
-            
+            */
         
             yield return new WaitForSeconds(this.timeBetweenPlacements);
 
@@ -82,7 +84,7 @@ public class BugPlacer : MonoBehaviour
         Transform[] bugTransforms = newBug.GetComponentsInChildren<Transform>();
         
         bugTransforms[1].rotation = Quaternion.Euler(newBug.transform.rotation.eulerAngles.x, newBug.transform.rotation.eulerAngles.y, randomZRotation);
-
+        /*
         if (spawnCollider.tag == "Bug")
         {
             BugBoy newBugBoy = newBug.GetComponentInChildren<BugBoy>();
@@ -91,8 +93,9 @@ public class BugPlacer : MonoBehaviour
             newBugBoy.prevBug = oldBugBoy;
             oldBugBoy.nextBug = newBugBoy;
         }
+        */
         
-        AudioChannelSettings channelSettings = new AudioChannelSettings(false, 0.8f, 1.2f, 0.1f, "", newBug.transform);
+        AudioChannelSettings channelSettings = new AudioChannelSettings(false, 0.8f, 1.2f, 0.1f, "SFX", newBug.transform);
 
         AudioManager.instance.Play(this.bugSpawnSound, channelSettings);
     }
