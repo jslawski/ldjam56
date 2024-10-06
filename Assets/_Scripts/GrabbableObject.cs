@@ -14,6 +14,8 @@ public class GrabbableObject : MonoBehaviour
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
             this.gameObject.transform.parent = this.playfieldTransform;
 
+            Scorekeeper.AddObject();
+
         }
     }
 }

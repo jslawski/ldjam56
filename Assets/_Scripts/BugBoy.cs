@@ -9,6 +9,7 @@ public class BugBoy : MonoBehaviour
 
     public void KillBug()
     {
+        Scorekeeper.RemoveBug();
         Destroy(this.gameObject.transform.parent.gameObject);
     }
 }

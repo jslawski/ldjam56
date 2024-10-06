@@ -84,20 +84,12 @@ public class BugPlacer : MonoBehaviour
         Transform[] bugTransforms = newBug.GetComponentsInChildren<Transform>();
         
         bugTransforms[1].rotation = Quaternion.Euler(newBug.transform.rotation.eulerAngles.x, newBug.transform.rotation.eulerAngles.y, randomZRotation);
-        /*
-        if (spawnCollider.tag == "Bug")
-        {
-            BugBoy newBugBoy = newBug.GetComponentInChildren<BugBoy>();
-            BugBoy oldBugBoy = spawnCollider.gameObject.GetComponentInChildren<BugBoy>();
-
-            newBugBoy.prevBug = oldBugBoy;
-            oldBugBoy.nextBug = newBugBoy;
-        }
-        */
         
         AudioChannelSettings channelSettings = new AudioChannelSettings(false, 0.8f, 1.2f, 0.1f, "SFX", newBug.transform);
 
         AudioManager.instance.Play(this.bugSpawnSound, channelSettings);
+
+        Scorekeeper.AddBug();
     }
 
     private void DestroyAllBugs()
