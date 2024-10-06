@@ -51,16 +51,7 @@ public class BugPlacer : MonoBehaviour
             float angle = Vector3.Angle(oldMouseRay.direction, newMouseRay.direction);
 
             this.SpawnBug(newHit.collider, newHit.point, newHit.normal);
-            /*
-            if (oldHit.collider != null && angle <= this.deadZoneAngle)
-            {
-                this.SpawnBug(oldHit.collider, oldHit.point, oldHit.normal);
-            }
-            else 
-            {
-                this.SpawnBug(newHit.collider, newHit.point, newHit.normal);
-            }
-            */
+
         
             yield return new WaitForSeconds(this.timeBetweenPlacements);
 
