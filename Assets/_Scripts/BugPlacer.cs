@@ -23,6 +23,11 @@ public class BugPlacer : MonoBehaviour
 
     //private float deadZoneAngle = 1.0f;
 
+    private void Start()
+    {
+        Scorekeeper.Reset();
+    }
+
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -35,6 +40,7 @@ public class BugPlacer : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.R))
         {
+            Scorekeeper.Reset();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
@@ -92,4 +98,6 @@ public class BugPlacer : MonoBehaviour
             Destroy(allBugs[i].gameObject);
         }
     }
+
+    
 }

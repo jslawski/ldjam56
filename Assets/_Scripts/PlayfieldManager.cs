@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayfieldAudio : MonoBehaviour
+public class PlayfieldManager : MonoBehaviour
 {
     private float screamAngleThreshold = 15.0f;
     private float panicAngleThreshold = 10.0f;

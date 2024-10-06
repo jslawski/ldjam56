@@ -15,7 +15,7 @@ public class GrabbableObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bug" || other.tag == "Playfield")
+        if (other.tag == "Bug" || other.tag == "Playfield" || other.tag == "Sandwich")
         {
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
             this.gameObject.tag = "Playfield";

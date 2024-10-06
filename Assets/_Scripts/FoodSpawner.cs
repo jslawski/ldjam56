@@ -13,7 +13,7 @@ public class FoodSpawner : MonoBehaviour
 
     private GameObject[] foodPrefabs;
 
-    private float timeBetweenFoodSpawns = 5.0f;
+    private float maxTimeBetweenFoodSpawns = 5.0f;
 
     [SerializeField]
     private Transform playfieldParent;
@@ -45,10 +45,8 @@ public class FoodSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(this.timeBetweenFoodSpawns);
-
+            yield return new WaitForSeconds(this.maxTimeBetweenFoodSpawns);
             this.SpawnFood();
-
         }
     }
 
