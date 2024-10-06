@@ -18,6 +18,7 @@ public class GrabbableObject : MonoBehaviour
         if (other.tag == "Bug" || other.tag == "Playfield")
         {
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
+            this.gameObject.tag = "Playfield";
             this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
             this.gameObject.transform.parent.transform.parent = this.playfieldTransform;
 
