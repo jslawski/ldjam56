@@ -17,6 +17,8 @@ public class GrabbableObject : MonoBehaviour
     {
         if (collision.collider.tag == "Bug" || collision.collider.tag == "Playfield")
         {
+            Debug.LogError("Tag: " + collision.collider.tag);
+        
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
             this.gameObject.transform.parent.transform.parent = this.playfieldTransform;
 
