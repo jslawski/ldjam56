@@ -77,7 +77,7 @@ public class BugPlacer : MonoBehaviour
     {
         GameObject newBug = Instantiate(this.bugPrefab, position, new Quaternion(), this.bugParent);
 
-        newBug.transform.forward = normal;
+        newBug.transform.forward = -normal;
 
         float randomZRotation = Random.Range(0.0f, 360);
 
