@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BugPlacer : MonoBehaviour
 {
-    private float timeBetweenPlacements = 0.03f;
+    private float timeBetweenPlacements = 0.02f;
 
     private Coroutine placingCoroutine;
 
@@ -16,6 +17,9 @@ public class BugPlacer : MonoBehaviour
 
     [SerializeField]
     private LayerMask collisionLayer;
+
+    [SerializeField]
+    private AudioClip bugSpawnSound;
 
     private float deadZoneAngle = 1.0f;
 
@@ -31,7 +35,7 @@ public class BugPlacer : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.R))
         {
-            this.DestroyAllBugs();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -48,11 +52,11 @@ public class BugPlacer : MonoBehaviour
 
             if (oldHit.collider != null && angle <= this.deadZoneAngle)
             {
-                this.SpawnBug(oldHit.point, oldHit.normal);
+                this.SpawnBug(oldHit.collider, oldHit.point, oldHit.normal);
             }
             else 
             {
-                this.SpawnBug(newHit.point, newHit.normal);
+                this.SpawnBug(newHit.collider, newHit.point, newHit.normal);
             }
             
         
@@ -67,10 +71,30 @@ public class BugPlacer : MonoBehaviour
         this.placingCoroutine = null;
     }
 
-    private void SpawnBug(Vector3 position, Vector3 normal)
+    private void SpawnBug(Collider spawnCollider, Vector3 position, Vector3 normal)
     {
         GameObject newBug = Instantiate(this.bugPrefab, position, new Quaternion(), this.bugParent);
-        newBug.transform.up = normal;
+
+        newBug.transform.forward = normal;
+
+        float randomZRotation = Random.Range(0.0f, 360);
+
+        Transform[] bugTransforms = newBug.GetComponentsInChildren<Transform>();
+        
+        bugTransforms[1].rotation = Quaternion.Euler(newBug.transform.rotation.eulerAngles.x, newBug.transform.rotation.eulerAngles.y, randomZRotation);
+
+        if (spawnCollider.tag == "Bug")
+        {
+            BugBoy newBugBoy = newBug.GetComponentInChildren<BugBoy>();
+            BugBoy oldBugBoy = spawnCollider.gameObject.GetComponentInChildren<BugBoy>();
+
+            newBugBoy.prevBug = oldBugBoy;
+            oldBugBoy.nextBug = newBugBoy;
+        }
+        
+        AudioChannelSettings channelSettings = new AudioChannelSettings(false, 0.8f, 1.2f, 0.1f, "", newBug.transform);
+
+        AudioManager.instance.Play(this.bugSpawnSound, channelSettings);
     }
 
     private void DestroyAllBugs()
