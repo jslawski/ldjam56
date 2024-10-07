@@ -8,7 +8,7 @@ public class LeaderboardEntryData
 {
     public string username;
     public float value;
-    public int placement;    
+    public int placement;
 }
 
 [Serializable]

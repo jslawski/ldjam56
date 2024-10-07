@@ -19,7 +19,6 @@ public class LeaderboardManager : MonoBehaviour
 {
     public static LeaderboardManager instance;
 
-    [HideInInspector]
     public LeaderboardEntryObject[] leaderboardEntryObjects;
 
     private Queue<LeaderboardUpdate> queuedUpdates;
@@ -39,7 +38,22 @@ public class LeaderboardManager : MonoBehaviour
         }
 
         this.leaderboardEntryObjects = GetComponentsInChildren<LeaderboardEntryObject>(true);
+
+        Debug.LogError("In Awake");        
         this.queuedUpdates = new Queue<LeaderboardUpdate>();
+    }
+
+    private void Start()
+    {
+        this.InitializeLeaderboardEntryObjects();
+    }
+
+    private void InitializeLeaderboardEntryObjects()
+    {
+        for (int i = 0; i < this.leaderboardEntryObjects.Length; i++)
+        {
+            this.leaderboardEntryObjects[i].placementText.text = (i + 1).ToString();
+        }
     }
 
     public void DisableLeaderboard()
@@ -139,7 +153,7 @@ public class LeaderboardManager : MonoBehaviour
 
         for (int i = 0; i < this.currentLeaderboardData.entries.Count && i < this.leaderboardEntryObjects.Length; i++)
         {
-            this.leaderboardEntryObjects[i].UpdateEntry(this.currentLeaderboardData.entries[i].username, this.currentLeaderboardData.entries[i].value);
+            this.leaderboardEntryObjects[i].UpdateEntry(this.currentLeaderboardData.entries[i].username, this.currentLeaderboardData.entries[i].value, this.currentLeaderboardData.entries[i].placement);
         }
     }
 
@@ -147,12 +161,17 @@ public class LeaderboardManager : MonoBehaviour
     {
         for (int i = 0; i < this.leaderboardEntryObjects.Length; i++)
         {
-            this.leaderboardEntryObjects[i].UpdateEntry(string.Empty, 0);
+            this.leaderboardEntryObjects[i].UpdateEntry(string.Empty, 0, 0);
         }
     }
 
     public bool IsTopPlayer(string username)
     {
         return (this.GetTopPlayer().username == username);
+    }
+
+    public void OnCloseButtonClicked()
+    {
+        Destroy(this.gameObject);
     }
 }
