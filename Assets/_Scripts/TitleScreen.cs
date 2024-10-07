@@ -120,11 +120,11 @@ public class TitleScreen : MonoBehaviour
     public IEnumerator QuitGameSequence()
     {
         AudioSource musicSource = GetComponent<AudioSource>();
-        while (musicSource.pitch > -2f)
+        while (musicSource.pitch > -0.4f)
         {
-            orbitSpeed -= 0.4f * Time.deltaTime;
-            musicSource.pitch -= 0.2f * Time.deltaTime;
-            yield return 0;
+            orbitSpeed -= 0.8f * Time.deltaTime;
+            musicSource.pitch -= 0.5f * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
         }
         Debug.Log("QUIT!");
         Application.Quit();
