@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayfieldManager : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class PlayfieldManager : MonoBehaviour
 
     private bool isPanic = false;
 
+    public static UnityAction OnPanicStarted;
+    
+    
     private void Start()
     {
         this.playfieldTransform = GetComponent<Transform>();
@@ -50,6 +54,7 @@ public class PlayfieldManager : MonoBehaviour
     {
         if (this.IsPastScreamThreshold() == true && AudioManager.instance.IsPlaying(this.screamAudioChannelID) == false && this.isScreaming == false)
         {
+            OnPanicStarted?.Invoke();
             this.screamChannelSettings = new AudioChannelSettings(false, 1.0f, 1.0f, 0.5f, "SFX", this.gameObject.transform);
             this.screamAudioChannelID = AudioManager.instance.FadeIn(this.screamAudio, this.screamChannelSettings, 0.5f);
             this.isScreaming = true;

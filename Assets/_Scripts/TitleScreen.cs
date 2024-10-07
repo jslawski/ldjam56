@@ -27,7 +27,8 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private AudioMixerGroup mixerGroup;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
-    
+    [SerializeField] private GameObject polaroid;
+    [SerializeField] private RawImage polaroidImage;
     
     [Header("Orbiting")]
     public float orbitSpeed = 10f;
@@ -67,6 +68,15 @@ public class TitleScreen : MonoBehaviour
             sfxSlider.value = 0.85f;   
         }
         
+    }
+
+    private void OnEnable()
+    {
+        if (ScreenshotManager.screenshotTexture != null)
+        {
+            polaroid.gameObject.SetActive(true);
+            polaroidImage.texture = ScreenshotManager.screenshotTexture;
+        }
     }
 
     // Update is called once per frame
@@ -125,6 +135,16 @@ public class TitleScreen : MonoBehaviour
         StartCoroutine(QuitGameSequence());
     }
 
+    public void OnMouseOverPolaroid()
+    {
+        polaroid.transform.localScale = Vector3.one * 3f;
+    }
+
+    public void OnMouseExitPolaroid()
+    {
+        polaroid.transform.localScale = Vector3.one * 0.61f;
+    }
+    
     public IEnumerator QuitGameSequence()
     {
         AudioSource musicSource = GetComponent<AudioSource>();
