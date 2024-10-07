@@ -1,0 +1,126 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
+public class TitleScreen : MonoBehaviour
+{
+    [Header("Camera Related")] 
+    [SerializeField]
+    private Transform camContainer;
+    [SerializeField]
+    private Transform cam;
+    
+    [Header("Ant Related")]
+    [SerializeField] private Transform antRainer;
+    [SerializeField] private Rigidbody antPrefab;
+    [SerializeField] private AudioClip antStickSound;
+    [SerializeField] private AudioSource aSource;
+
+    [Header("UI")] 
+    [SerializeField] private Image logo;
+    [SerializeField] private Image logoBG;
+    
+    [Header("Orbiting")]
+    public float orbitSpeed = 10f;
+    public float minCamZoom = 2f;
+    public float maxCamZoom = 10f;
+    public float targetZoom = 2f;
+    public float zoomSpeed = 1f;
+    public float zoomChangeAverageDuration = 8f;
+    
+    private float zoomChangeTimer = 0f;
+
+    public static bool sculptMode = false;
+    
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        zoomChangeTimer = Random.Range(zoomChangeAverageDuration*0.75f, zoomChangeAverageDuration*1.5f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        camContainer.transform.Rotate(Vector3.up,orbitSpeed*Time.deltaTime);
+
+        if (zoomChangeTimer > 0f)
+        {
+            zoomChangeTimer -= Time.deltaTime;
+            if (zoomChangeTimer <= 0)
+            {
+                targetZoom = Random.Range(minCamZoom, maxCamZoom);
+                zoomChangeTimer = Random.Range(zoomChangeAverageDuration*0.75f, zoomChangeAverageDuration*1.5f);
+            }
+        }
+
+        if (Mathf.Abs(cam.transform.localPosition.magnitude - targetZoom) > 0.1f)
+        {
+            float sign = Mathf.Sign(targetZoom-cam.transform.localPosition.magnitude);
+            cam.transform.localPosition += cam.transform.localPosition.normalized * (sign*Time.deltaTime * zoomSpeed);
+        }
+
+
+        if (Random.Range(0, 100) < 25)
+        {
+            Rigidbody antBody = Instantiate(antPrefab, antRainer);
+            antBody.transform.position = antRainer.position;
+            antBody.transform.localEulerAngles = Random.insideUnitSphere * 360;
+            antBody.AddForce((antRainer.forward*8f)+ Random.insideUnitSphere*2f, ForceMode.Impulse); 
+        }
+        
+    }
+
+
+
+    public void StartGame(bool inSculptMode)
+    {
+        sculptMode = inSculptMode;
+        SceneLoader.instance.LoadScene("JaredDev");
+    }
+    
+    public void ShowLeaderboard()
+    {
+        // TODO(brainoid): Show leaderboard
+    }
+
+    public void QuitGame()
+    {
+        StartCoroutine(QuitGameSequence());
+    }
+
+    public IEnumerator QuitGameSequence()
+    {
+        AudioSource musicSource = GetComponent<AudioSource>();
+        while (musicSource.pitch > -2f)
+        {
+            orbitSpeed -= 0.4f * Time.deltaTime;
+            musicSource.pitch -= 0.2f * Time.deltaTime;
+            yield return 0;
+        }
+        Debug.Log("QUIT!");
+        Application.Quit();
+    }
+
+
+    public void GotoURl(string URL)
+    {
+        Application.OpenURL(URL);
+    }
+    
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Bug"))
+        {
+            Destroy(other.rigidbody);
+            other.transform.SetParent(transform,true);
+            other.transform.position = other.GetContact(0).point;
+            aSource.pitch = Random.Range(0.8f, 1.2f);
+            aSource.PlayOneShot(antStickSound,0.05f);
+        }
+    }
+}
