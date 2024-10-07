@@ -21,6 +21,9 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI totalScoreLabel;
 
+    [SerializeField]
+    private GameObject leaderboard;
+
     private void OnEnable()
     {
         this.bugCountLabel.text = Scorekeeper.GetHighestBugCount().ToString();
@@ -37,5 +40,10 @@ public class GameOverScreen : MonoBehaviour
     public void OnReplayPressed()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnLeaderboardButtonPressed()
+    {
+        LeaderboardManager.instance.DisplayLeaderboard();
     }
 }
