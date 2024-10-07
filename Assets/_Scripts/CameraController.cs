@@ -6,6 +6,10 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     private float rotationSpeed = 1.0f;
+    [SerializeField]
+    private AnimationCurve rotationCurve;
+    private float rotationAcceleration = 0.2f;
+
 
     [SerializeField]
     private float moveSpeed = 10.0f;
@@ -26,6 +30,9 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     private Transform focusObjectTransform;
+
+    private Coroutine clockwiseCoroutine = null;
+    private Coroutine counterClockwiseCoroutine = null;
 
     // Update is called once per frame
     void Update()
@@ -49,10 +56,16 @@ public class CameraController : MonoBehaviour
                 this.cameraTransform.position = newCameraPosition;
             }
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            float newYRotation = this.transform.rotation.eulerAngles.y + (this.rotationSpeed * Time.deltaTime);
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, newYRotation, this.transform.rotation.eulerAngles.z);
+            if (this.counterClockwiseCoroutine != null)
+            {
+                StopCoroutine(this.counterClockwiseCoroutine);
+            }
+            if (this.clockwiseCoroutine == null)
+            {
+                this.clockwiseCoroutine = StartCoroutine(this.RotateClockwise());
+            }
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -66,10 +79,16 @@ public class CameraController : MonoBehaviour
                 this.cameraHolderTransform.position = new Vector3(this.cameraHolderTransform.position.x, newYPosition, this.cameraHolderTransform.position.z);
             }
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            float newYRotation = this.transform.rotation.eulerAngles.y - (this.rotationSpeed * Time.deltaTime);
-            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, newYRotation, this.transform.rotation.eulerAngles.z);
+            if (this.counterClockwiseCoroutine != null)
+            {
+                StopCoroutine(this.clockwiseCoroutine);
+            }
+            if (this.counterClockwiseCoroutine == null)
+            {
+                this.counterClockwiseCoroutine = StartCoroutine(this.RotateCounterClockwise());
+            }
         }
         /*
         if (Input.mouseScrollDelta.y != 0.0f)
@@ -89,5 +108,44 @@ public class CameraController : MonoBehaviour
             }
         }
         */
+    }
+
+    private IEnumerator RotateClockwise()
+    {
+        float currentT = 0.0f;
+    
+        while (Input.GetKey(KeyCode.A))
+        {
+            float currentSpeed = this.rotationCurve.Evaluate(currentT);
+            
+            float newYRotation = this.transform.rotation.eulerAngles.y + (currentSpeed * this.rotationSpeed * Time.deltaTime);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, newYRotation, this.transform.rotation.eulerAngles.z);
+
+            currentT += (this.rotationAcceleration * Time.deltaTime);
+
+            yield return null;
+        }
+
+        this.clockwiseCoroutine = null;
+    }
+
+    private IEnumerator RotateCounterClockwise()
+    {
+        float currentT = 0.0f;
+
+        while (Input.GetKey(KeyCode.D))
+        {
+            float currentSpeed = this.rotationCurve.Evaluate(currentT);
+
+            float newYRotation = this.transform.rotation.eulerAngles.y - (currentSpeed * this.rotationSpeed * Time.deltaTime);
+            this.transform.rotation = Quaternion.Euler(this.transform.rotation.eulerAngles.x, newYRotation, this.transform.rotation.eulerAngles.z);
+
+            currentT += (this.rotationAcceleration * Time.deltaTime);
+
+            yield return null;
+        }
+
+
+        this.counterClockwiseCoroutine = null;
     }
 }
