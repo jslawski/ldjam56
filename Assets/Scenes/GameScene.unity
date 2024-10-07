@@ -7541,6 +7541,7 @@ MonoBehaviour:
   foodScoreLabel: {fileID: 745955240}
   totalScoreLabel: {fileID: 1371493215}
   leaderboard: {fileID: 367289492}
+  gameOverAudio: {fileID: 8300000, guid: ce16b5063ac40274d927e281aea190d5, type: 3}
 --- !u!1 &1701015366
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,7 +8252,7 @@ Transform:
   m_GameObject: {fileID: 2019853481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: -2.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8270,6 +8271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1542550331}
+  splashAudio: {fileID: 8300000, guid: 3c0b4c96d663eb74b96b144d91c9df1b, type: 3}
 --- !u!54 &2019853486
 Rigidbody:
   m_ObjectHideFlags: 0

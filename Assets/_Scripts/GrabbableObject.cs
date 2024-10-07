@@ -21,6 +21,9 @@ public class GrabbableObject : MonoBehaviour
     [SerializeField]
     private Material nonFresnelMaterial;
 
+    [SerializeField]
+    private AudioClip grabAudio;
+
     private void OnTriggerEnter(Collider other)
     {    
         if ((other.tag == "Bug" || other.tag == "Playfield" || other.tag == "Sandwich") && this.grabbed == false)
@@ -38,6 +41,9 @@ public class GrabbableObject : MonoBehaviour
             this.foodRenderer.material = this.nonFresnelMaterial;
 
             this.grabbed = true;
+
+            AudioChannelSettings channelSettings = new AudioChannelSettings(false, 1.0f, 1.0f, 1.0f, "SFX");
+            AudioManager.instance.Play(this.grabAudio, channelSettings);
         }
     }
 

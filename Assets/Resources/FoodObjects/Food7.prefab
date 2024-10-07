@@ -447,6 +447,7 @@ MonoBehaviour:
   obtainParticles: {fileID: 9044834400942669191}
   foodRenderer: {fileID: 8185832578924393681}
   nonFresnelMaterial: {fileID: 2100000, guid: 9a0cc0b92cb81eb45b12bcebf0160025, type: 2}
+  grabAudio: {fileID: 8300000, guid: 7bde02aa5a199c247b4a9b3cbc8364f4, type: 3}
 --- !u!64 &1214006310563066023
 MeshCollider:
   m_ObjectHideFlags: 0

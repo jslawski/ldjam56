@@ -47,7 +47,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void Start()
     {        
-        this.PlayVideoCutscene("introCutscene.mp4", false, this.LoadNextScene);
+        this.PlayVideoCutscene("Sammich_Intro.mp4", false, this.LoadNextScene);
     }
 
     private void LoadNextScene()
