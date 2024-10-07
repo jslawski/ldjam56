@@ -148,7 +148,7 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 0.85
+    - _Exposure: 0.78
     - _Foam_Amount: 1
     - _Foam_Cutoff: 1
     - _Foam_Scale: 100
@@ -206,7 +206,7 @@ Material:
     - _Shallow_Water: {r: 0.36163497, g: 0.851695, b: 1, a: 1}
     - _SkyTint: {r: 0.68867916, g: 0.918026, b: 1, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 1, g: 1, b: 1, a: 0.5}
+    - _Tint: {r: 0.76324105, g: 0.93710685, b: 0.8133141, a: 0.5}
     - _Water_Texture_Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &6278075811769895483

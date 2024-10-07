@@ -31,7 +31,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -40,6 +40,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Base_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Normal_Map:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -114,6 +122,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - Normal_Blend: 0.5
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Blend: 0
@@ -127,17 +136,21 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DecalMeshBiasType: 0
+    - _DecalMeshDepthBias: 0
+    - _DecalMeshViewBias: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _Distortion_Scale: 26.19
     - _Distortion_Speed: 0.2
+    - _DrawOrder: 0
     - _DstBlend: 10
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Foam_Amount: 1.96
+    - _Foam_Amount: 1.2
     - _Foam_Cutoff: 3.9
     - _Foam_Scale: 129.67
-    - _Foam_Speed: 2.8
+    - _Foam_Speed: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -151,21 +164,21 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Refraction_Scale: 1.03
+    - _Refraction_Scale: 0.76
     - _Refraction_Speed: 0.1
-    - _Refraction_Strength: 0.19
+    - _Refraction_Strength: 0.25
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 5
     - _SrcBlendAlpha: 1
     - _Surface: 1
-    - _Water_Depth: 1.2
+    - _Water_Depth: 0.59
     - _Water_Distortion_Scale: 19.09
     - _Water_Distortion_Speed: 0.02
     - _Water_Scroll_Speed: 0.01
     - _Water_Texture_Distortion_Amount: 0.0115
-    - _Water_Texture_Scale: 3
+    - _Water_Texture_Scale: 1.59
     - _Water_Texture_Speed: 0.1
     - _WorkflowMode: 1
     - _ZTest: 4
@@ -175,12 +188,12 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Cell_Color: {r: 0, g: 0.109181985, b: 0.1955119, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepWater: {r: 0, g: 0.55350536, b: 0.8805031, a: 1}
+    - _DeepWater: {r: 0, g: 0.57143503, b: 0.88235295, a: 0.83137256}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Foam_Color: {r: 0.75157225, g: 0.9779342, b: 1, a: 0.6901961}
     - _Nois_Color: {r: 0.72641504, g: 1, b: 0.8723671, a: 1}
     - _Noise_Color: {r: 0, g: 4.7651086, b: 9.563122, a: 1}
-    - _Shallow_Water: {r: 0.090196066, g: 0.9269314, b: 1, a: 0.34901962}
+    - _Shallow_Water: {r: 0.09019602, g: 0.9269314, b: 1, a: 0.63529414}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Water_Texture_Color: {r: 0.16431297, g: 0.7437837, b: 0.7798742, a: 1}
   m_BuildTextureStacks: []

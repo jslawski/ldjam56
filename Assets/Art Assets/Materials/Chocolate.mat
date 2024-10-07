@@ -117,7 +117,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Glow_Power: 2.26
-    - _Glow_Strength: 0
+    - _Glow_Strength: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
