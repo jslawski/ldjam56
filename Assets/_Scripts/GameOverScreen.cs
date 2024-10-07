@@ -24,8 +24,14 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private GameObject leaderboard;
 
+    [SerializeField]
+    private AudioClip gameOverAudio;
+
     private void OnEnable()
     {
+        //AudioChannelSettings channelSettings = new AudioChannelSettings(false, 1.0f, 1.0f, 1.0f, "SFX");
+        //AudioManager.instance.Play(this.gameOverAudio, channelSettings);
+
         this.bugCountLabel.text = Scorekeeper.GetHighestBugCount().ToString();
         this.bugPointValueLabel.text = Scorekeeper.bugPointValue.ToString();
         this.bugScoreLabel.text = Scorekeeper.GetBugScore().ToString();

@@ -45,6 +45,8 @@ public class TitleScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;    
+
         zoomChangeTimer = Random.Range(zoomChangeAverageDuration*0.75f, zoomChangeAverageDuration*1.5f);
         
         if (PlayerPrefs.HasKey("MusicVolume"))
