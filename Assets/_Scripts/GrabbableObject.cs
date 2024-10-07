@@ -12,6 +12,12 @@ public class GrabbableObject : MonoBehaviour
 
     [SerializeField]
     private GameObject indicatorObject;
+    [SerializeField]
+    private GameObject sparkleObject;
+    [SerializeField]
+    private ParticleSystem obtainParticles;
+    [SerializeField]
+    private Material fresnelMaterial;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,32 +25,20 @@ public class GrabbableObject : MonoBehaviour
         {
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
             this.gameObject.tag = "Playfield";
-            this.gameObject.GetComponent<BoxCollider>().isTrigger = false;
+            this.gameObject.GetComponent<Collider>().isTrigger = false;
             this.gameObject.transform.parent.transform.parent = this.playfieldTransform;
 
             Scorekeeper.AddObject();
 
             this.indicatorObject.SetActive(false);
+            this.sparkleObject.SetActive(false);
+            this.obtainParticles.Play();
+            this.fresnelMaterial.SetFloat("_Glow_Strength", 0.0f);
 
             this.grabbed = true;
         }
     }
-    /*
-    private void OnTriggerEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Bug" && this.grabbed == false)
-        {        
-            this.gameObject.layer = LayerMask.NameToLayer("Playfield");
-            this.gameObject.transform.parent.transform.parent = this.playfieldTransform;
 
-            Scorekeeper.AddObject();
-
-            this.indicatorObject.SetActive(false);
-
-            this.grabbed = true;
-        }
-    }
-    */
     private void FixedUpdate()
     {
         if (this.grabbed == true)
@@ -52,10 +46,6 @@ public class GrabbableObject : MonoBehaviour
             return;
         }
     
-        //Vector3 newPosition = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y - (this.fallSpeed * Time.deltaTime), this.gameObject.transform.position.z);
-
-        
-
         this.gameObject.transform.parent.Translate(Vector3.down * this.fallSpeed * Time.fixedDeltaTime);
     }
 }
