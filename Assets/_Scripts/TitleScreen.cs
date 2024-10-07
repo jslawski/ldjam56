@@ -19,7 +19,7 @@ public class TitleScreen : MonoBehaviour
     [SerializeField] private Transform antRainer;
     [SerializeField] private Rigidbody antPrefab;
     [SerializeField] private AudioClip antStickSound;
-    [SerializeField] private AudioSource aSource;
+    [SerializeField] private AudioClip titleBgm;
 
     [Header("UI")] 
     [SerializeField] private Image logo;
@@ -53,7 +53,7 @@ public class TitleScreen : MonoBehaviour
         }
         else
         {
-            musicSlider.value = 0.5f;
+            musicSlider.value = 0.3f;
         }
 
         if (PlayerPrefs.HasKey("SFXVolume"))
@@ -148,7 +148,6 @@ public class TitleScreen : MonoBehaviour
     {
         mixerGroup.audioMixer.SetFloat("SFXVolume", Mathf.Log10(ratio) * 20);
         PlayerPrefs.SetFloat("SFXVolume",ratio);
-        
     }
     
     
@@ -159,8 +158,9 @@ public class TitleScreen : MonoBehaviour
             Destroy(other.rigidbody);
             other.transform.SetParent(transform,true);
             other.transform.position = other.GetContact(0).point;
-            aSource.pitch = Random.Range(0.8f, 1.2f);
-            aSource.PlayOneShot(antStickSound,0.05f);
+
+            AudioChannelSettings musicChannelSettings = new AudioChannelSettings(false, 0.8f, 1.2f, 0.05f, "SFX");
+            AudioManager.instance.Play(this.antStickSound, musicChannelSettings);
         }
     }
     

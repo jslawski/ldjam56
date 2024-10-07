@@ -4022,7 +4022,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.468
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5507,6 +5507,53 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!1 &1532282450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1532282452}
+  - component: {fileID: 1532282451}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1532282451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532282450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2292f7aca84e8a84eb4d21e687830764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioChannelPrefab: {fileID: 3198527283903495338, guid: f37332798cac2a14a9600abd037437d8,
+    type: 3}
+  audioChannelCacheSize: 50
+--- !u!4 &1532282452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532282450}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 584.4023, y: 429.23584, z: -2.0248303}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1655512542 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3490331564595228455, guid: 63d585aef9a7f294c8b3c1ad741c3d4e,
@@ -7077,7 +7124,7 @@ MonoBehaviour:
   antPrefab: {fileID: 3104153588350678767, guid: 540294444e3654e4b9034a957af91ac1,
     type: 3}
   antStickSound: {fileID: 8300000, guid: 3743979a27cda7b4cae730aa0f52144a, type: 3}
-  aSource: {fileID: 7654363281144554978}
+  titleBgm: {fileID: 0}
   logo: {fileID: 0}
   logoBG: {fileID: 0}
   mixerGroup: {fileID: 24300002, guid: d001dce2f24661347a7a7ef86401ffae, type: 2}
@@ -7102,7 +7149,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 44c9d24fc173e2a47a29083e4420c653, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7299,3 +7346,4 @@ SceneRoots:
   - {fileID: 1513013938}
   - {fileID: 89952020}
   - {fileID: 848473408}
+  - {fileID: 1532282452}
