@@ -11,7 +11,6 @@ public class SplashMenu : MonoBehaviour
     [SerializeField]
     private FadePanelManager fadePanel;
 
-    [SerializeField]
     private string nextSceneName;
     [SerializeField]
     private VideoPlayer videoPlayer;
@@ -31,6 +30,17 @@ public class SplashMenu : MonoBehaviour
         this.fadePanel.OnFadeSequenceComplete += this.DisplaySplashScreen;
         
         videoPlayer.started += OnVideoStarted;
+
+        string playerName = PlayerPrefs.GetString("username", string.Empty);
+
+        if (playerName == string.Empty)
+        {
+            this.nextSceneName = "LoginScene";
+        }
+        else
+        {
+            this.nextSceneName = "JaredDev";
+        }
     }
 
     void OnVideoStarted(VideoPlayer inVideoPlayer)
