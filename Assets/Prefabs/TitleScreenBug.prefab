@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 5870029440852984432}
   - component: {fileID: 8624184107702713050}
   - component: {fileID: 3050998742777874694}
-  - component: {fileID: 1966830848558938957}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Model
   m_TagString: Bug
   m_Icon: {fileID: 0}
@@ -109,20 +108,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.000015258789, z: 0}
---- !u!114 &1966830848558938957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597329912203353246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9461ac8278acbf2489a20aac99fdee19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextBug: {fileID: 0}
-  prevBug: {fileID: 0}
 --- !u!1 &8422261998403667321
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +119,7 @@ GameObject:
   - component: {fileID: 110324300732791827}
   - component: {fileID: 3104153588350678767}
   - component: {fileID: 2598971201895395658}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: TitleScreenBug
   m_TagString: Bug
   m_Icon: {fileID: 0}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -23,6 +24,10 @@ public class TitleScreen : MonoBehaviour
     [Header("UI")] 
     [SerializeField] private Image logo;
     [SerializeField] private Image logoBG;
+    [SerializeField] private AudioMixerGroup mixerGroup;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
+    
     
     [Header("Orbiting")]
     public float orbitSpeed = 10f;
@@ -41,6 +46,25 @@ public class TitleScreen : MonoBehaviour
     void Start()
     {
         zoomChangeTimer = Random.Range(zoomChangeAverageDuration*0.75f, zoomChangeAverageDuration*1.5f);
+        
+        if (PlayerPrefs.HasKey("MusicVolume"))
+        {   
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        }
+        else
+        {
+            musicSlider.value = 0.5f;
+        }
+
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        }
+        else
+        {
+            sfxSlider.value = 0.85f;   
+        }
+        
     }
 
     // Update is called once per frame
@@ -112,6 +136,22 @@ public class TitleScreen : MonoBehaviour
         Application.OpenURL(URL);
     }
     
+    
+    public void UpdateMusicVolume(float ratio)
+    {
+        // set the music volume using logarithmic approach
+        mixerGroup.audioMixer.SetFloat("MusicVolume", Mathf.Log10(ratio) * 20);
+        PlayerPrefs.SetFloat("MusicVolume",ratio);
+    }
+    
+    public void UpdatSFXVolume(float ratio)
+    {
+        mixerGroup.audioMixer.SetFloat("SFXVolume", Mathf.Log10(ratio) * 20);
+        PlayerPrefs.SetFloat("SFXVolume",ratio);
+        
+    }
+    
+    
     public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Bug"))
@@ -123,4 +163,6 @@ public class TitleScreen : MonoBehaviour
             aSource.PlayOneShot(antStickSound,0.05f);
         }
     }
+    
+    
 }

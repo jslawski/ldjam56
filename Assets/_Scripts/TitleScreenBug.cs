@@ -9,7 +9,7 @@ public class TitleScreenBug : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("StartDying",5f);
+        Invoke("StartDying",4f);
     }
 
     public void StartDying()
@@ -28,7 +28,7 @@ public class TitleScreenBug : MonoBehaviour
         if (!dying)
             return;
             
-        transform.localScale -= Vector3.one * (0.05f * Time.deltaTime);
+        transform.localScale -= Vector3.one * (0.2f * Time.deltaTime);
         if (transform.localScale.x < 0.01f)
         {
             Destroy(gameObject);
