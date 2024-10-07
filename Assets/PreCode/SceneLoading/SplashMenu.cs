@@ -90,10 +90,19 @@ public class SplashMenu : MonoBehaviour
     public IEnumerator FadeOutVideoVolume()
     {
         AudioSource aSource = videoPlayer.GetTargetAudioSource(0);
-        while (aSource.volume > 0f)
+        if (aSource)
         {
-            aSource.volume -= Time.deltaTime * 0.01f;
-            yield return 0;
+            while (aSource.volume > 0f)
+            {
+                aSource.volume -= Time.deltaTime * 0.01f;
+                yield return 0;
+            }    
+        }
+        else
+        {
+            float vol = videoPlayer.GetDirectAudioVolume(0);
+            vol -= Time.deltaTime * 0.01f;
+            videoPlayer.SetDirectAudioVolume(0,vol);
         }
     }
     
