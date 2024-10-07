@@ -106,7 +106,13 @@ public class TitleScreen : MonoBehaviour
         sculptMode = inSculptMode;
         SceneLoader.instance.LoadScene("GameScene");
     }
-    
+
+    public void StartFreePlay(bool inSculptMode)
+    {
+        sculptMode = inSculptMode;
+        SceneLoader.instance.LoadScene("FreePlayScene");
+    }
+
     public void ShowLeaderboard()
     {
         // TODO(brainoid): Show leaderboard
