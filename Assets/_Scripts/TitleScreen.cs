@@ -53,7 +53,7 @@ public class TitleScreen : MonoBehaviour
         }
         else
         {
-            musicSlider.value = 0.3f;
+            musicSlider.value = 0.2f;
         }
 
         if (PlayerPrefs.HasKey("SFXVolume"))
