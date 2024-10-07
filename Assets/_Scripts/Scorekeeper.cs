@@ -8,7 +8,7 @@ public static class Scorekeeper
     private static int objectCount = 0;
     private static int highestBugCount = 0;
 
-    public static int objectPointValue = 100;
+    public static int objectPointValue = 300;
     public static int bugPointValue = 1;
 
     public static void Reset()
