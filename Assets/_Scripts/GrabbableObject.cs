@@ -22,8 +22,8 @@ public class GrabbableObject : MonoBehaviour
     private Material nonFresnelMaterial;
 
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Bug" || other.tag == "Playfield" || other.tag == "Sandwich")
+    {    
+        if ((other.tag == "Bug" || other.tag == "Playfield" || other.tag == "Sandwich") && this.grabbed == false)
         {
             this.gameObject.layer = LayerMask.NameToLayer("Playfield");
             this.gameObject.tag = "Playfield";
