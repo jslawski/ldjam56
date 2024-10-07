@@ -502,6 +502,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 229220070}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &229220072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7523290236223122649, guid: 3d63db7f3a314014c82130aae58a815f,
+    type: 3}
+  m_PrefabInstance: {fileID: 229220070}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &229220073 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6671884197067150211, guid: 3d63db7f3a314014c82130aae58a815f,
+    type: 3}
+  m_PrefabInstance: {fileID: 229220070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291166954
 GameObject:
   m_ObjectHideFlags: 0
@@ -7267,8 +7285,8 @@ MonoBehaviour:
   mixerGroup: {fileID: 24300002, guid: d001dce2f24661347a7a7ef86401ffae, type: 2}
   musicSlider: {fileID: 1023345409}
   sfxSlider: {fileID: 794052329}
-  polaroid: {fileID: 0}
-  polaroidImage: {fileID: 0}
+  polaroid: {fileID: 229220073}
+  polaroidImage: {fileID: 229220072}
   orbitSpeed: 25
   minCamZoom: 3
   maxCamZoom: 7
