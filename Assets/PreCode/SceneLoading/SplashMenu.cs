@@ -32,6 +32,8 @@ public class SplashMenu : MonoBehaviour
         this.fadePanel.OnFadeSequenceComplete += this.DisplaySplashScreen;
         
         videoPlayer.started += OnVideoStarted;
+
+        Cursor.visible = false;
     }
 
     private void Start()
