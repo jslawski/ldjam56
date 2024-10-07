@@ -20,13 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ant
-  m_Shader: {fileID: 4800000, guid: 650dd9526735d5b46b79224bc6e94025, type: 3}
+  m_Name: Popsicle_Glow
+  m_Shader: {fileID: -6465566751694194690, guid: 9e80288bfb735f34f9610e093b33842a,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _EMISSION
+  m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -39,11 +39,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 7f2f1807257bb7c4f81ffbc683b479c3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 65bc25770cb1be3438a1618642c60cce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 7104ca4743f63e447b7392163a024000, type: 3}
+        m_Texture: {fileID: 2800000, guid: ea55d376f63c8504bba231925c3b512a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -59,11 +59,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 7f2f1807257bb7c4f81ffbc683b479c3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 65bc25770cb1be3438a1618642c60cce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7f2f1807257bb7c4f81ffbc683b479c3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9756c03baf8776b4da2574312ac99271, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -112,11 +112,11 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Power: 4.86
+    - _Fresnel_Power: 3.32
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Glow_Power: 4.81
+    - _Glow_Power: 2.79
     - _Glow_Strength: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -124,9 +124,9 @@ Material:
     - _Pulse_Speed: 5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _ReceiveShadows: 0
     - _SampleGI: 0
-    - _Smoothness: 0.701
+    - _Smoothness: 0.609
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -140,7 +140,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.9748427, g: 0.9748427, b: 0.9748427, a: 1}
-    - _Fresnel_Color: {r: 1, g: 0.27987415, b: 0.9137687, a: 1}
-    - _Glow_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Fresnel_Color: {r: 0.20125782, g: 0.20125782, b: 0.20125782, a: 1}
+    - _Glow_Color: {r: 3.732132, g: 2.722559, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
