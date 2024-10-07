@@ -30,7 +30,10 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField]
     private GameObject leaderboardObject;
 
-    private void Awake()
+    [SerializeField]
+    private GameObject leaderboardCanvas;
+
+    public void Awake()
     {
         if (instance == null)
         {
@@ -39,12 +42,8 @@ public class LeaderboardManager : MonoBehaviour
 
         this.leaderboardEntryObjects = GetComponentsInChildren<LeaderboardEntryObject>(true);
 
-        Debug.LogError("In Awake");        
         this.queuedUpdates = new Queue<LeaderboardUpdate>();
-    }
 
-    private void Start()
-    {
         this.InitializeLeaderboardEntryObjects();
     }
 
@@ -59,6 +58,12 @@ public class LeaderboardManager : MonoBehaviour
     public void DisableLeaderboard()
     {
         this.leaderboardObject.SetActive(false);
+    }
+
+    public void DisplayLeaderboard()
+    {
+        this.leaderboardCanvas.SetActive(true);
+        this.RefreshLeaderboard("leaderboard");
     }
 
     public void RefreshLeaderboard(string tableName)
@@ -103,9 +108,7 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     private void UpdateLeaderboardSuccess(string data)
-    {
-        this.currentLeaderboardData = JsonUtility.FromJson<LeaderboardData>(data);
-        this.UpdateLeaderboardVisuals();
+    {        
         this.readyToProcessUpdate = true;
     }
 
@@ -172,6 +175,6 @@ public class LeaderboardManager : MonoBehaviour
 
     public void OnCloseButtonClicked()
     {
-        Destroy(this.gameObject);
+        this.leaderboardCanvas.SetActive(false);
     }
 }

@@ -12,6 +12,8 @@ public class FoodKillPlane : MonoBehaviour
         if (other.tag == "Sandwich")
         {
             this.gameOverPanel.SetActive(true);
+            
+            LeaderboardManager.instance.QueueLeaderboardUpdate(PlayerPrefs.GetString("username", "--"), Scorekeeper.GetTotalScore(), "leaderboard");
         }
 
         Destroy(other.gameObject);
