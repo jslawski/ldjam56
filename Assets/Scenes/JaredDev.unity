@@ -2443,6 +2443,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1428902335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2711249547905993911, guid: ac2608e07de06194e91eaa6d8238a778,
+    type: 3}
+  m_PrefabInstance: {fileID: 1519127779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1519127779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3731,6 +3737,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2711249548456695639, guid: ac2608e07de06194e91eaa6d8238a778,
+        type: 3}
+      propertyPath: leaderboardCanvas
+      value: 
+      objectReference: {fileID: 1428902335}
     - target: {fileID: 2738590083394228118, guid: ac2608e07de06194e91eaa6d8238a778,
         type: 3}
       propertyPath: m_AnchoredPosition.x
