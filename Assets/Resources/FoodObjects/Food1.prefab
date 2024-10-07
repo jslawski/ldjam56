@@ -71,7 +71,8 @@ MonoBehaviour:
   indicatorObject: {fileID: 479894512888035245}
   sparkleObject: {fileID: 1123085670025081641}
   obtainParticles: {fileID: 475532258635448412}
-  fresnelMaterial: {fileID: 2100000, guid: eacbaef2abfbfb545b067b7f79888203, type: 2}
+  foodRenderer: {fileID: 4896123750463100740}
+  nonFresnelMaterial: {fileID: 2100000, guid: eacbaef2abfbfb545b067b7f79888203, type: 2}
 --- !u!1 &7358837349627587323
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +361,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a93bb4e19062d4848b4ac0db7908addb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d278a59da1a541d41ac8be71b12d7639, type: 2}
     - target: {fileID: 919132149155446097, guid: a93bb4e19062d4848b4ac0db7908addb,
         type: 3}
       propertyPath: m_Name
@@ -370,6 +376,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a93bb4e19062d4848b4ac0db7908addb, type: 3}
+--- !u!23 &4896123750463100740 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: a93bb4e19062d4848b4ac0db7908addb,
+    type: 3}
+  m_PrefabInstance: {fileID: 6067214279605898176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6033040370221919275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a93bb4e19062d4848b4ac0db7908addb,

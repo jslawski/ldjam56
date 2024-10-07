@@ -17,7 +17,9 @@ public class GrabbableObject : MonoBehaviour
     [SerializeField]
     private ParticleSystem obtainParticles;
     [SerializeField]
-    private Material fresnelMaterial;
+    private MeshRenderer foodRenderer;
+    [SerializeField]
+    private Material nonFresnelMaterial;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -33,7 +35,7 @@ public class GrabbableObject : MonoBehaviour
             this.indicatorObject.SetActive(false);
             this.sparkleObject.SetActive(false);
             this.obtainParticles.Play();
-            this.fresnelMaterial.SetFloat("_Glow_Strength", 0.0f);
+            this.foodRenderer.material = this.nonFresnelMaterial;
 
             this.grabbed = true;
         }
