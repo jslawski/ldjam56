@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Apple
+  m_Name: Apple_Glow
   m_Shader: {fileID: -6465566751694194690, guid: 9e80288bfb735f34f9610e093b33842a,
     type: 3}
   m_Parent: {fileID: 0}
@@ -117,7 +117,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Glow_Power: 2.79
-    - _Glow_Strength: 0
+    - _Glow_Strength: 0.944
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

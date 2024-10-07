@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Apple
+  m_Name: Cheese_Glow
   m_Shader: {fileID: -6465566751694194690, guid: 9e80288bfb735f34f9610e093b33842a,
     type: 3}
   m_Parent: {fileID: 0}
@@ -34,16 +34,16 @@ Material:
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _Glow_Strength
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 65bc25770cb1be3438a1618642c60cce, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9abc7b44e5d92694f8e6094bd9311f33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: ea55d376f63c8504bba231925c3b512a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 42c6bd438be919b47882d506e9bbd7ed, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -59,11 +59,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 65bc25770cb1be3438a1618642c60cce, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9abc7b44e5d92694f8e6094bd9311f33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 65bc25770cb1be3438a1618642c60cce, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9abc7b44e5d92694f8e6094bd9311f33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -101,7 +101,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
-    - _BumpScale: 1
+    - _BumpScale: 2
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -112,12 +112,12 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _Fresnel_Power: 3.32
+    - _Fresnel_Power: 4.1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Glow_Power: 2.79
-    - _Glow_Strength: 0
+    - _Glow_Power: 16.26
+    - _Glow_Strength: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -140,7 +140,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.9748427, g: 0.9748427, b: 0.9748427, a: 1}
-    - _Fresnel_Color: {r: 0.20125782, g: 0.20125782, b: 0.20125782, a: 1}
-    - _Glow_Color: {r: 3.732132, g: 2.722559, b: 0, a: 1}
+    - _Fresnel_Color: {r: 0.42767292, g: 0.2928928, b: 0.2165262, a: 1}
+    - _Glow_Color: {r: 55.06544, g: 33.644417, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
