@@ -32,11 +32,28 @@ public class CutsceneManager : MonoBehaviour
         {
             instance = this;
         }
+
+        this.fadePanel = GameObject.Find("SceneLoader").GetComponentInChildren<FadePanelManager>();
     }
 
     private void Start()
     {
-        Cursor.visible = false;
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "cutscene.mp4");
+        this.PlayVideoCutscene(filePath, false, this.LoadNextScene);
+    }
+
+    private void LoadNextScene()
+    {
+        string playerName = PlayerPrefs.GetString("username", string.Empty);
+
+        if (playerName == string.Empty)
+        {
+            SceneLoader.instance.LoadScene("LoginScene");
+        }
+        else
+        {
+            SceneLoader.instance.LoadScene("TitleScreen");
+        }
     }
 
     #region Utility

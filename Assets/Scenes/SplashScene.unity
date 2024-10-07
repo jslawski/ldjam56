@@ -612,6 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadePanel: {fileID: 1812535581}
+  nextSceneName: CutsceneScene
   videoPlayer: {fileID: 1330189531}
   skipFiller: {fileID: 2043493860}
   skipKeyHoldDuration: 1.2
