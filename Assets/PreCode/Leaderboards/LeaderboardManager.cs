@@ -33,6 +33,9 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField]
     private GameObject leaderboardCanvas;
 
+    [SerializeField]
+    private Sprite[] sammichPieces;
+
     public void Awake()
     {
         if (instance == null)
@@ -52,6 +55,31 @@ public class LeaderboardManager : MonoBehaviour
         for (int i = 0; i < this.leaderboardEntryObjects.Length; i++)
         {
             this.leaderboardEntryObjects[i].placementText.text = (i + 1).ToString();
+            this.SetSammichPiece(this.leaderboardEntryObjects[i], i);
+        }
+    }
+
+    private void SetSammichPiece(LeaderboardEntryObject entryObject, int index)
+    {
+        int moddedIndex = index % 4;    
+
+        switch (moddedIndex)
+        {
+            case 0:
+                entryObject.backgroundImage.sprite = this.sammichPieces[0];
+                break;
+            case 1:
+                entryObject.backgroundImage.sprite = this.sammichPieces[1];
+                break;
+            case 2:
+                entryObject.backgroundImage.sprite = this.sammichPieces[2];
+                break;
+            case 3:
+                entryObject.backgroundImage.sprite = this.sammichPieces[3];
+                break;
+            default:
+                entryObject.backgroundImage.sprite = this.sammichPieces[0];
+                break;
         }
     }
 
