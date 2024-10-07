@@ -24,6 +24,7 @@ public class SplashMenu : MonoBehaviour
     public float skipTimer = 0f;
     private bool skipped = false;
     
+
     
     private void Awake()
     {
@@ -39,8 +40,15 @@ public class SplashMenu : MonoBehaviour
         }
         else
         {
-            this.nextSceneName = "JaredDev";
+            this.nextSceneName = "TitleScreen";
         }
+    }
+
+    private void Start()
+    {
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "kbcbsplsh_16x9.mp4");
+        this.videoPlayer.url = filePath;
+        this.videoPlayer.Play();
     }
 
     void OnVideoStarted(VideoPlayer inVideoPlayer)

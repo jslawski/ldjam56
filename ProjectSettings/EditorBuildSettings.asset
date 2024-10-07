@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SplashScene.unity
+    guid: 5c960224cc87a5b4a9168ac88a012893
+  - enabled: 1
     path: Assets/Scenes/JaredDev.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
     path: Assets/Scenes/LoginScene.unity
-    guid: a541ab558c32b1848b6642415a7e7917
+    guid: b7521c3eaea8e8349a9a894a84ddb391
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: e3ded18587c080648a6249d0972ee67f
   m_configObjects: {}

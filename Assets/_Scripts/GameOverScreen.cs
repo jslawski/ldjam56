@@ -39,7 +39,12 @@ public class GameOverScreen : MonoBehaviour
 
     public void OnReplayPressed()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneLoader.instance.LoadScene("JaredDev");
+    }
+
+    public void OnMenuPressed()
+    {
+        SceneLoader.instance.LoadScene("TitleScreen");
     }
 
     public void OnLeaderboardButtonPressed()
