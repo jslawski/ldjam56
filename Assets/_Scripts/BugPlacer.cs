@@ -98,6 +98,4 @@ public class BugPlacer : MonoBehaviour
             Destroy(allBugs[i].gameObject);
         }
     }
-
-    
 }
