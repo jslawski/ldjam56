@@ -104,7 +104,7 @@ public class TitleScreen : MonoBehaviour
     public void StartGame(bool inSculptMode)
     {
         sculptMode = inSculptMode;
-        SceneLoader.instance.LoadScene("JaredDev");
+        SceneLoader.instance.LoadScene("GameScene");
     }
     
     public void ShowLeaderboard()

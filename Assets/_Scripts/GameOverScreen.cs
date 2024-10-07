@@ -39,7 +39,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void OnReplayPressed()
     {
-        SceneLoader.instance.LoadScene("JaredDev");
+        SceneLoader.instance.LoadScene("GameScene");
     }
 
     public void OnMenuPressed()
