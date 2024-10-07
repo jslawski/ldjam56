@@ -37,9 +37,8 @@ public class CutsceneManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, "cutscene.mp4");
-        this.PlayVideoCutscene(filePath, false, this.LoadNextScene);
+    {        
+        this.PlayVideoCutscene("introCutscene.mp4", false, this.LoadNextScene);
     }
 
     private void LoadNextScene()
