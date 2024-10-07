@@ -471,7 +471,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b266025bd239a7f45b220464320b5346,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.17
+      value: 15.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b266025bd239a7f45b220464320b5346,
         type: 3}
@@ -1230,7 +1230,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 86c78321bb030724db984d669ce54229,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.069582
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86c78321bb030724db984d669ce54229,
         type: 3}
@@ -1240,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 86c78321bb030724db984d669ce54229,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.77915764
+      value: 1.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86c78321bb030724db984d669ce54229,
         type: 3}
@@ -1748,12 +1748,12 @@ GameObject:
   - component: {fileID: 1860878648}
   - component: {fileID: 1860878647}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: blackBacking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1860878647
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1795,7 +1795,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 28861fba9c9e3944a874e2124488af63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1833,13 +1833,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860878646}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.78, y: -0.34, z: 3.74}
-  m_LocalScale: {x: 13.608, y: 5.4979, z: 9.3254}
+  m_LocalRotation: {x: -0.106471255, y: 0.0004441686, z: -0.10660154, w: 0.98858476}
+  m_LocalPosition: {x: 15.06, y: 7.3, z: 13.45}
+  m_LocalScale: {x: 99.23292, y: 3.9496593, z: 110.25667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -12.147, y: 1.382, z: -12.456}
 --- !u!1001 &1983945946
 PrefabInstance:
   m_ObjectHideFlags: 0
