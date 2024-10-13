@@ -42,7 +42,7 @@ public class GrabbableObject : MonoBehaviour
 
             this.grabbed = true;
 
-            AudioChannelSettings channelSettings = new AudioChannelSettings(false, 1.0f, 1.0f, 1.0f, "SFX");
+            AudioChannelSettings channelSettings = new AudioChannelSettings(false, 1.0f, 1.0f, 0.5f, "SFX");
             AudioManager.instance.Play(this.grabAudio, channelSettings);
         }
     }
